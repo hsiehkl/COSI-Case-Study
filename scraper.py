@@ -32,7 +32,6 @@ class Scraper():
             date_str = date.strftime("%B_%d")
             date_id = db.insert_date(date_time, date.year, date.month, date.day, date_str)
 
-            print("--------{}--------".format(date_str))
             url = self.base_url + date_str
             response = requests.get(url=url, headers=self.headers)
             soup = BeautifulSoup(response.content, 'html.parser')
@@ -66,5 +65,4 @@ class Scraper():
 
                             link_data = [(link.get('title'), link.get('href')) for link in links]
                             [db.insert_link(date_id, data[0], data[1]) for data in link_data]
-
         return
