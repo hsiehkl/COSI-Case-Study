@@ -1,14 +1,27 @@
+import sys
 if __name__ == "__main__":
     from db import WikiDB
     import scraper
     import time
 
-    start = time.time()
-    year = '1990'
-    wiki_db = WikiDB(year)
-    scraper = scraper.Scraper(year)
-    scraper.parse(wiki_db)
-    wiki_db.close()
+    if len(sys.argv) == 2:
 
-    end = time.time()
-    print("Time Taken: {:.6f}s".format(end-start))
+        # get year arguement
+        year=str(sys.argv[1])
+
+        start = time.time()
+
+        # init a db includes tables
+        wiki_db = WikiDB(year)
+
+        # init a scraper for getting data from wekipeida
+        scraper = scraper.Scraper(year)
+
+        # parse data into db
+        scraper.parse(wiki_db)
+
+        # close db
+        wiki_db.close()
+
+        end = time.time()
+        print("Time Taken: {:.6f}s".format(end-start))
