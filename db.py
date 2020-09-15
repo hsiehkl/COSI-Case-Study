@@ -3,12 +3,14 @@ import sqlite3
 class WikiDB:
 
     def __init__(self, year):
+        """initialize sqlite3 connection"""
         db_name = "wikipedia" + year + '.db'
         self.connection = sqlite3.connect(db_name)
         self.cursor = self.connection.cursor()
         self.build()
 
     def build(self):
+        """create new tables"""
         try:
             self.create_wikipedia_tables()
         except:
@@ -20,6 +22,7 @@ class WikiDB:
         self.connection.close()
 
     def create_wikipedia_tables(self):
+        """create tables"""
         self.cursor.execute("""CREATE TABLE date(
                         id INTEGER PRIMARY KEY NOT NULL,
                         datetime DATETIME NOT NULL,
@@ -52,6 +55,7 @@ class WikiDB:
                         FOREIGN KEY(date_id) REFERENCES date(id))""")
 
     def drop_wikipedia_tables(self):
+        """drop tables"""
         self.cursor.execute("DROP TABLE date")
         self.cursor.execute("DROP TABLE event")
         self.cursor.execute("DROP TABLE birth")
@@ -59,6 +63,7 @@ class WikiDB:
         self.cursor.execute("DROP TABLE link")
 
     def insert_date(self, datetime, year, month, day, date_str):
+        """insert date into date tabble"""
         params = (datetime, year, month, day, date_str)
         self.cursor.execute("INSERT INTO date VALUES (NULL, ?, ?, ?, ?, ?)", params)
         date_id = self.cursor.lastrowid
@@ -66,6 +71,7 @@ class WikiDB:
         return date_id
 
     def insert_event(self, date_id, event):
+        """insert evnent into evnent table"""
         params = (date_id, event)
         self.cursor.execute("INSERT INTO event VALUES (NULL, ?, ?)", params)
         event_id = self.cursor.lastrowid
@@ -73,6 +79,7 @@ class WikiDB:
         return event_id
 
     def insert_birth(self, date_id, person, description):
+        """insert birth into birth table"""
         params = (date_id, person, description)
         self.cursor.execute("INSERT INTO birth VALUES (NULL, ?, ?, ?)", params)
         event_id = self.cursor.lastrowid
@@ -80,6 +87,7 @@ class WikiDB:
         return event_id
 
     def insert_death(self, date_id, person, description):
+        """insert death into death table"""
         params = (date_id, person, description)
         self.cursor.execute("INSERT INTO death VALUES (NULL, ?, ?, ?)", params)
         event_id = self.cursor.lastrowid
@@ -87,6 +95,7 @@ class WikiDB:
         return event_id
 
     def link_exist(self, value):
+        """check if a link already existed"""
         if value:
             self.cursor.execute("SELECT title FROM link WHERE title=?", (value, ))
             result = self.cursor.fetchone()
@@ -97,7 +106,8 @@ class WikiDB:
         else:
             return True
 
-    def insert_links(self, date_id, title, link):
+    def insert_link(self, date_id, title, link):
+        """insert link into link table"""
         params = (date_id, title, link)
         existed = self.link_exist(title)
         if not existed:
