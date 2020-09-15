@@ -23,7 +23,7 @@ class Scraper():
 
         year = self.year
 
-        daterange = pd.date_range('{}-01-01'.format(year), '{}-12-31'.format(year))
+        daterange = pd.date_range('{}-01-01'.format(year), '{}-01-02'.format(year))
 
         for i_date in range(len(daterange)):
             date = daterange[i_date]
@@ -35,7 +35,6 @@ class Scraper():
             url = self.base_url + date_str
             response = requests.get(url=url, headers=self.headers)
             soup = BeautifulSoup(response.content, 'html.parser')
-
 
             for id in id_list:
                 lis = soup.find(id=id).findNext("ul").find_all("li")
@@ -64,6 +63,34 @@ class Scraper():
                             elif id == "Deaths":
                                 db.insert_death(date_id, person, description)
 
+                            link_data = [(link.get('title'), link.get('href')) for link in links]
+                            [db.insert_links(date_id, data[0], data[1]) for data in link_data]
+
         return
 
 
+# base_url = 'https://en.wikipedia.org/wiki/'
+# id_list = ["Events", "Births", "Deaths"]
+
+# year = '1990'
+
+# daterange = pd.date_range('{}-01-01'.format(year), '{}-01-02'.format(year))
+
+# for i_date in range(len(daterange)):
+#     date = daterange[i_date]
+#     date_time = date.strftime("%Y-%m-%d")
+#     date_str = date.strftime("%B_%d")
+#     # date_id = db.insert_date(date_time, date.year, date.month, date.day, date_str)
+
+#     print("--------{}--------".format(date_str))
+#     url = base_url + date_str
+#     response = requests.get(url=url)
+#     soup = BeautifulSoup(response.content, 'html.parser')
+
+#     for id in id_list:
+#         lis = soup.find(id=id).findNext("ul").find_all("li")
+#         for li in lis:
+#             text = [x.strip() for x in li.text.split(" – ")]
+#             links = li.find_all('a')
+
+#             print(data)

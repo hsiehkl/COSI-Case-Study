@@ -1,7 +1,7 @@
 import sys
 if __name__ == "__main__":
     from db import WikiDB
-    import scraper
+    from scraper import Scraper
     import time
 
     if len(sys.argv) == 2:
@@ -15,7 +15,7 @@ if __name__ == "__main__":
         wiki_db = WikiDB(year)
 
         # init a scraper for getting data from wekipeida
-        scraper = scraper.Scraper(year)
+        scraper = Scraper(year)
 
         # parse data into db
         scraper.parse(wiki_db)
