@@ -10,7 +10,8 @@ Collect event, births, deaths data form [wikipedia](https://en.wikipedia.org/wik
  * Creating tables that are easily joining and aggregating.
 
 ## Result:
-Database of year 1990: [wikipedia1990](https://github.com/hsiehkl/COSI-Case-Study/blob/master/wikipedia1990.db)
+Handy impletementing code for buliding db with a given year.
+Example result: Database of year 1990, [wikipedia1990](https://github.com/hsiehkl/COSI-Case-Study/blob/master/wikipedia1990.db)
 
 There are 5 tables:
 * date table includes id, datetime, year, month, day, date_str columns
