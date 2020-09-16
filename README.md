@@ -10,8 +10,16 @@ Collect event, births, deaths data form [wikipedia](https://en.wikipedia.org/wik
  * Creating tables that are easily joining and aggregating.
 
 ## Result:
-Database of year 1990: [db](https://github.com/hsiehkl/COSI-Case-Study/blob/master/wikipedia1990.db)
+Database of year 1990: [wikipedia1990](https://github.com/hsiehkl/COSI-Case-Study/blob/master/wikipedia1990.db)
 
+There are 5 tables:
+* date table includes id, datetime, year, month, day, date_str columns
+* event table includes id, date_id, event
+* birth table includes id, date_id, person, description
+* death table includes id, date_id, person, description
+* link table includes id, date_id, title, link
+
+With this db:
 * Can easily answer quesitons like: in which month most people die and born.
 * Can find direct widipeida page by given title.
 
@@ -20,13 +28,6 @@ Command: ```python run.py -YEAR```
 
 Example: ```python run.py 1990```
 
-Creating 5 tables:
-* date table includes id, datetime, year, month, day, date_str columns
-* event table includes id, date_id, event
-* birth table includes id, date_id, person, description
-* death table includes id, date_id, person, description
-* link table includes id, date_id, title, link
-
 Time taken: around 190s
 
 ## Usage 2 (multi-thread version):
@@ -34,10 +35,4 @@ Command: ```python run_multithreading.py -YEAR```
 
 Example: ```python run_multithreading.py 1990```
 
-Creating 4 tables:
-* date table includes id, datetime, year, month, day, date_str columns
-* event table includes id, date_id, event
-* birth table includes id, date_id, person, description
-* death table includes id, date_id, person, description
-
-Time taken: Around 75s
+Time taken: around 75s
