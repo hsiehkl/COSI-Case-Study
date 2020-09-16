@@ -10,9 +10,9 @@ Collect event, births, deaths data form [wikipedia](https://en.wikipedia.org/wik
  * Creating tables that are easily joining and aggregating.
 
 ## Result:
-[db](https://github.com/hsiehkl/COSI-Case-Study/blob/master/wikipedia1990.db)
+Database of year 1990: [db](https://github.com/hsiehkl/COSI-Case-Study/blob/master/wikipedia1990.db)
 
-* Can easily answer quesitons like in which month most people die and born.
+* Can easily answer quesitons like: in which month most people die and born.
 * Can find direct widipeida page by given title.
 
 ## Usage 1 (basic version):
