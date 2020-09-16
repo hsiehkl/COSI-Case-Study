@@ -29,7 +29,7 @@ Creating 5 tables:
 
 Time taken: around 190s
 
-## Usage 2 (mutil-thread version):
+## Usage 2 (multi-thread version):
 Command: ```python run_multithreading.py -YEAR```
 
 Example: ```python run_multithreading.py 1990```
