@@ -21,7 +21,7 @@ There are 5 tables:
 
 With this db:
 * Can easily answer quesitons like: in which month most people die and born.
-* Can find direct widipeida page by given title.
+* Can find direct widipeida link by given keyword.
 
 ## Usage 1 (basic version):
 Command: ```python run.py -YEAR```
