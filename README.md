@@ -20,7 +20,7 @@ There are 5 tables:
 * link table includes id, date_id, title, link
 
 With this db:
-* Can easily answer quesitons like: in which month most people die and born.
+* Can easily answer quesitons like: in which month most people have died and borned.
 * Can find direct widipeida link by given keyword.
 
 ## Usage 1 (basic version):
