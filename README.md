@@ -11,6 +11,7 @@ Collect event, births, deaths data form [wikipedia](https://en.wikipedia.org/wik
 
 ## Result:
 Handy impletementing code for buliding db with a given year.
+
 Example result: Database of year 1990, [wikipedia1990](https://github.com/hsiehkl/COSI-Case-Study/blob/master/wikipedia1990.db)
 
 There are 5 tables:
